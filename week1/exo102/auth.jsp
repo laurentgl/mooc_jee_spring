@@ -18,17 +18,22 @@
 <div class="container">
 
       <!-- TODO : fix form method -->
-      <form class="form-signin">
+      <form class="form-signin" action ="auth" method ="post">
         
         <!-- TODO : check for error message and display this div -->
-        <div class="alert alert-danger" role="alert">show error message here if any !</div>
+        <% if (request.getAttribute("errorMessage") != null){
+          out.println("<div class=\"alert alert-danger\" role=\"alert\">Unknown user !</div>");
+        }
+        %>
+        
+        
         
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <!-- TODO : should set input names -->
-        <input id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
+        <input id="inputEmail" name="login" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
         <label for="inputPassword" class="sr-only">Password</label>
-        <input id="inputPassword" class="form-control" placeholder="Password" required="" type="password">
+        <input id="inputPassword" name="password" class="form-control" placeholder="Password" required="" type="password">
         <div class="checkbox">
           <label>
             <input value="remember-me" type="checkbox"> Remember me
